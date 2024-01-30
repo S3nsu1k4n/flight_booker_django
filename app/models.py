@@ -8,8 +8,8 @@ class Airport(models.Model):
 class Flight(models.Model):
     start_datetime = models.DateTimeField('Start', help_text='When the flight will start')
     duration = models.DurationField('Duration', help_text='Duration of the flight')
-    departure = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Departure airport')
-    arrival = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Arrival airport')
+    departure = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Departure airport', related_name='departing_flights')
+    arrival = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Arrival airport', related_name='arriving_flights')
 
 
 class Booking(models.Model):
