@@ -11,6 +11,8 @@ class Flight(models.Model):
     departure = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Departure airport', related_name='departing_flights')
     arrival = models.ForeignKey(Airport, on_delete=models.CASCADE, help_text='Arrival airport', related_name='arriving_flights')
 
+    def date_as_string(self) -> str:
+        return self.start_datetime.strftime('%Y-%m-%d')
 
 class Booking(models.Model):
     pass

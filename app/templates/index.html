@@ -1,0 +1,39 @@
+{% extends 'generic_base.html' %}
+
+{% block title %}Flights{% endblock %}
+
+{% block content %}
+  <h1>Search</h1>
+
+  <form action="" method="GET">
+    <label for="arrival_airport">Arrival Airport</label>
+    <select name="arrival_airport" id="arrival_airport">
+      {% for airport in airports %}
+        <option value="{{ airport.code }}">{{ airport.code }}</option>
+      {% endfor %}
+      </select>
+  
+    <label for="departure_airport">Departure Airport</label>
+    <select name="departure_airport" id="departure_airport">
+      {% for airport in airports %}
+        <option value="{{ airport.code }}">{{ airport.code }}</option>
+      {% endfor %}
+      </select>
+  
+    <label for="passengers">Passengers</label>
+    <select name="passengers" id="passengers">
+      {% for i in passengers %}
+        <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+      </select>
+  
+    <label for="datetime">Passengers</label>
+    <select name="datetime" id="datetime">
+      {% for flight in flights %}
+        <option value="{{ flight }}">{{ flight }}</option>
+      {% endfor %}
+      </select>
+
+    <input type="Submit" value="Search">
+  </form>
+{% endblock %}
