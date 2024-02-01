@@ -46,7 +46,7 @@ class Command(BaseCommand):
     def seed_flights(self):
         t1 = time.perf_counter()
         airports = Airport.objects.all()
-        for i in range(10):
+        for i in range(100):
             departure = random.choice(airports)
             arrival = random.choice(airports)
 
@@ -55,8 +55,8 @@ class Command(BaseCommand):
 
             f = Flight(start_datetime=datetime.now(tz=timezone.utc) + timedelta(days=random.randint(0, 61)),
                        duration=timedelta(hours=random.randint(1, 20)),
-                       departure=departure,
-                       arrival=arrival,
+                       departure_airport=departure,
+                       arrival_airport=arrival,
                        )
             f.save()
 

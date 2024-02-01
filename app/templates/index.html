@@ -36,5 +36,25 @@
       </select>
 
     <input type="Submit" value="Search">
+
+    <section class="results">
+      <h1>Available Flights</h1>
+      <form action="" method="GET">
+        {% for flight in available_flights %}
+          <div class="flight">
+              <span>Arrival Airport:</span>
+              <span>{{ flight.arrival_airport.code }}</span>
+              <span>Departure Airport:</span>
+              <span>{{ flight.departure_airport.code }}</span>
+              <span>Date:</span>
+              <span>{{ flight.start_datetime }}</span>
+              <span>Duration:</span>
+              <span>{{ flight.duration }}</span>
+              <input type="radio" name="chosen_flight" id="chosen_flight" value="{{ flight.id }}">
+          </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+      </form>
+    </section>
   </form>
 {% endblock %}

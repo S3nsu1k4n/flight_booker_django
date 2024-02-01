@@ -5,5 +5,6 @@ from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
-    path('flights/', view=views.index)
+    path('flights/', view=views.index, name='flights_index'),
+    path('booking/', view=views.booking_create, name='booking_create'),
 ]
