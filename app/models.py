@@ -14,10 +14,15 @@ class Flight(models.Model):
     def date_as_string(self) -> str:
         return self.start_datetime.strftime('%Y-%m-%d')
 
-class Booking(models.Model):
-    pass
-
 
 class Passenger(models.Model):
     name = models.CharField('Name', max_length=64, help_text='Name of the passenger')
     email = models.EmailField('Email', max_length=64, unique=True, help_text='Email address of the passenger')
+
+    @classmethod
+    def get_by_email(cls, email: str):
+        return Passenger.objects.filter(email=email)
+
+class Booking(models.Model):
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE, help_text='The booked flight')
+    passengers = models.ManyToManyField(Passenger, related_name='booked_flights')
